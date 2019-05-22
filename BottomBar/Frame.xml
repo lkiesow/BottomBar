@@ -1,0 +1,180 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Frame.lua" />
+	<Frame name="BBConfigFrame" hidden="true" toplevel="true" movable="true">
+		<Size x="379" y="172" />
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset x="0" y="54" />
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer>
+				<FontString name="pref_height_label" inherits="GameFontNormalSmall" text="Height">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="60" y="-56" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="pref_alpha_label" inherits="GameFontNormalSmall" text="Transparency">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="214" y="-56" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="pref_title" inherits="GameFontNormal" text="BottomBar Preferences">
+					<Size x="349" y="20" />
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset x="0" y="61" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="pref_alpha_value" inherits="GameFontNormalSmall" text="1">
+					<Size x="100" y="16" />
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="214" y="-96" />
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Frames>
+			<EditBox name="pref_height" enableKeyboard="true" font="ChatFontNormal" letters="5" numeric="true">
+				<Size x="68" y="20" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="81" y="-82" />
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="pref_height_Right" file="Interface\Common\Common-Input-Border">
+							<Size x="8" y="20" />
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset x="4" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.9375" right="1" top="0" bottom="0.625" />
+						</Texture>
+						<Texture name="pref_height_Left" file="Interface\Common\Common-Input-Border">
+							<Size x="8" y="20" />
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="-4" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.0625" top="0" bottom="0.625" />
+						</Texture>
+						<Texture name="pref_height_Middle" file="Interface\Common\Common-Input-Border">
+							<Size x="10" y="20" />
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="pref_height_Left" relativePoint="RIGHT" />
+								<Anchor point="RIGHT" relativeTo="pref_height_Right" relativePoint="LEFT" />
+							</Anchors>
+							<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625" />
+						</Texture>
+					</Layer>
+				</Layers>
+				<BackgroundInsets>
+					<AbsInset left="8" right="8" top="1" bottom="1" />
+				</BackgroundInsets>
+			</EditBox>
+			<Button name="bb_pref_btn_ok" inherits="UIPanelButtonTemplate" text="Ok">
+				<Size x="100" y="20" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="60" y="-124" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>bb_pref_btn_ok_OnClick();</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="bb_pref_btn_cancel" inherits="UIPanelButtonTemplate" text="Cancel">
+				<Size x="100" y="22" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="214" y="-124" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+            bb_pref_btn_cancel_OnClick();
+          </OnClick>
+				</Scripts>
+			</Button>
+			<Slider name="pref_alpha" enableMouse="true" minValue="0" maxValue="10" defaultValue="10" valueStep="1" orientation="HORIZONTAL">
+				<Size x="100" y="8" />
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset x="214" y="-86" />
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnValueChanged>pref_alpha_OnValueChanged();</OnValueChanged>
+				</Scripts>
+				<Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="3" right="3" top="6" bottom="6" />
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="8" />
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="2" />
+					</EdgeSize>
+				</Backdrop>
+				<ThumbTexture name="pref_alpha_thumb" file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+					<Size>
+						<AbsDimension x="32" y="32" />
+					</Size>
+				</ThumbTexture>
+			</Slider>
+		</Frames>
+	</Frame>
+	<Frame name="BBBottomFrame" parent="UIParent" movable="true" frameStrata="BACKGROUND" enableMouse="true">
+		<Size>
+			<AbsDimension x="605" y="250" />
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT">
+				<Offset x="-50" y="-50" />
+			</Anchor>
+			<Anchor point="BOTTOMRIGHT">
+				<Offset x="50" y="-50" />
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>BottomFrame_OnLoad();</OnLoad>
+			<OnEvent>BottomFrame_OnEvent();</OnEvent>
+		</Scripts>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+	</Frame>
+</Ui>

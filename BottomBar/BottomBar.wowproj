@@ -1,0 +1,45 @@
+﻿<Project DefaultTargets="Deploy" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Default</Configuration>
+    <Name>BottomBar</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{b7b4fea4-58f7-45c0-9128-05060e50e1b8}</ProjectGuid>
+    <WowPath>K:\World of Warcraft\</WowPath>
+    <AssemblyName>BottomBar</AssemblyName>
+    <RootNamespace>BottomBar</RootNamespace>
+    <SavedVariablesPerCharacter>bb_height, bb_alpha</SavedVariablesPerCharacter>
+  </PropertyGroup>
+  <PropertyGroup>
+    <InterfaceVersion>30200</InterfaceVersion>
+    <AddonTitle>BottomBar</AddonTitle>
+    <AddonNotes>Basic WoW Addon</AddonNotes>
+    <AddonVersion>r90910</AddonVersion>
+    <Author>Lars Kiesow</Author>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Default' ">
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WowAddonStudio\1.0\WowAddonStudio.targets" />
+  <ItemGroup>
+    <Content Include="BottomBar.toc">
+      <SubType>TableOfContents</SubType>
+    </Content>
+    <Content Include="Frame.xml">
+      <SubType>Frame</SubType>
+    </Content>
+    <Content Include="Frame.lua">
+      <SubType>Code</SubType>
+      <DependentUpon>Frame.xml</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <!--
+	To modify your build process, add your task inside one of the targets below and uncomment it. 
+		
+	<Target Name="BeforeClean"></Target>
+	<Target Name="AfterClean"></Target>
+	<Target Name="BeforeRebuild"></Target>
+	<Target Name="AfterRebuild"></Target>
+	<Target Name="BeforeDeploy"></Target>
+	<Target Name="AfterDeploy"></Target>
+	-->
+</Project>
